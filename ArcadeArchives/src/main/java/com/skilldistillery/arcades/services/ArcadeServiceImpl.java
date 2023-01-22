@@ -1,6 +1,7 @@
 package com.skilldistillery.arcades.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,26 +22,33 @@ public class ArcadeServiceImpl implements ArcadeService {
 
 	@Override
 	public Arcade getArcade(int arcadeId) {
-		// TODO Auto-generated method stub
-		return null;
+		Arcade arcade = null;
+		Optional<Arcade> arcadeOpt = arcadeRepo.findById(arcadeId);
+		if (arcadeOpt.isPresent()) {
+			arcade = arcadeOpt.get();
+		}
+		return arcade;
 	}
 
 	@Override
 	public Arcade create(Arcade arcade) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return arcadeRepo.saveAndFlush(arcade);
 	}
 
 	@Override
 	public Arcade update(int arcadeId, Arcade arcade) {
-		// TODO Auto-generated method stub
-		return null;
+		Arcade existing = getArcade(arcadeId);
+		existing.setName(arcade.getName());
+		existing.setDescription(arcade.getDescription());
+		existing.setImageUrl(arcade.getImageUrl());
+		return arcadeRepo.save(existing);
 	}
 
 	@Override
 	public boolean deleteById(int arcadeId) {
-		// TODO Auto-generated method stub
-		return false;
+		arcadeRepo.deleteById(arcadeId);
+		return !arcadeRepo.existsById(arcadeId);
 	}
 
 }

@@ -2,6 +2,7 @@ package com.skilldistillery.arcades.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,11 @@ public class Arcade {
 	private int id;
 	
 	private String name;
+	
+	private String description;
+	
+	@Column(name = "image_url")
+	private String imageUrl;
 
 	public Arcade() {
 		super();
@@ -40,6 +46,22 @@ public class Arcade {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	@Override
