@@ -1,7 +1,7 @@
 # EventTrackerProject
 
 # API Calls
-
+| :---:          | :---:               | :---:            | :---:             |
 |  HTTP Verb     | URI                 | Request Body     | Response Body     |
 | :---           |        :----      |     :----       |              ---: |
 | GET            | /api/arcades        |                  | JSON ```List<Arcade>```       |
