@@ -26,27 +26,36 @@
 	<div id="arcadeList" class="mainDivs" style="display: none;"></div>
 
 	<div id="arcadeDetails" class="mainDivs" style="display: none;"></div>
-	
-	<div id="searchDiv" class="mainDivs" style="display: none;"></div>
+
+	<div id="singleArcadeDiv" class="mainDivs" style="display: none;"></div>
+
+	<div id="searchDiv" class="mainDivs" style="display: none;">
+
+		<form name="arcadeForm">
+			<label for="arcadeId">Search</label> <input type="number"
+				name="arcadeId">
+			<button name="lookup">Get Arcade by Id</button>
+		</form>
+
+	</div>
 
 	<div id="newArcadeDiv" class="mainDivs zoom" style="display: none;">
 		<h3>Add a New Arcade</h3>
 		<hr>
-		<form name="createArcadeForm">
-			<label for="name">Name: </label> 
-			<input type="text" name="name"placeholder="name"><br> 
-			<label for="description">Description: </label>
-			<input type="text" name="description" placeholder="description"><br>
-			<label for="name">Image: </label>
-			<input type="text" name="imageUrl" placeholder="image url"><br>
-			<input id="newArcadeBtn" type="submit" name="submit" value="submit"><br>
+		<form name="createArcadeForm" id="createArcadeForm">
+			<label for="name">Name: </label> <input type="text" name="name"
+				placeholder="name"><br> <label for="description">Description:
+			</label> <input type="text" name="description" placeholder="description"><br>
+			<label for="imageUrl">Image: </label> <input type="text" name="imageUrl"
+				placeholder="image url"><br> <input
+				type="submit" name="submit" value="submit" id="newArcadeBtn"><br>
 		</form>
 	</div>
 
 	<div id="updateArcadeDiv" class="mainDivs" style="display: none;"></div>
-	
+
 	<div id="deleteArcadeDiv" class="mainDivs" style="display: none;"></div>
-	
+
 	<div id="gamesList" class="mainDivs" style="display: none;"></div>
 
 	<!-- 	  <div id="starfield">

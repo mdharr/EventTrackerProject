@@ -8,9 +8,9 @@ window.addEventListener('load', function(e) {
 function init() {
 
 	// if eventListener != this eventListener {remove it}
-	
+
 	let homeLink = document.getElementById('homeLink');
-	homeLink.addEventListener('click', function(e){
+	homeLink.addEventListener('click', function(e) {
 		e.preventDefault();
 		let welcome = document.getElementById('welcome');
 		let mainDivs = document.getElementsByClassName('mainDivs');
@@ -47,6 +47,14 @@ function init() {
 			}
 		}
 		searchDiv.style.display = 'block';
+		document.arcadeForm.lookup.addEventListener('click', function(e) {
+			e.preventDefault();
+			let arcadeId = document.arcadeForm.arcadeId.value;
+			if (!isNaN(arcadeId) && arcadeId > 0) {
+				getArcade(arcadeId);
+			}
+		});
+
 	});
 
 	let addLink = document.getElementById('addLink');
@@ -60,6 +68,26 @@ function init() {
 			}
 		}
 		newArcadeDiv.style.display = 'block';
+
+
+		let createArcadeForm = document.getElementById('createArcadeForm');
+		console.log(createArcadeForm);
+		document.createArcadeForm.submit.addEventListener('click', function(e) {
+			e.preventDefault();
+			console.log('Adding arcade');
+			let newArcade = {
+				name: document.createArcadeForm.name.value,
+				description: document.createArcadeForm.description.value,
+				imageUrl: document.createArcadeForm.imageUrl.value,
+			};
+			//newFilm.title = newFilmForm.title.value; also works
+			//TODO: validate film properties
+			console.log(newArcade);
+			addArcade(newArcade);
+		});
+
+
+
 	});
 
 	let updateLink = document.getElementById('updateLink');
@@ -105,107 +133,7 @@ function init() {
 
 }
 
-
-
-
-
-function loadCanvas() {
-	const canvas = document.getElementById("canvas");
-	const c = canvas.getContext("2d");
-
-	let w;
-	let h;
-
-	const setCanvasExtents = () => {
-		w = document.body.clientWidth;
-		h = document.body.clientHeight;
-		canvas.width = w;
-		canvas.height = h;
-	};
-
-	setCanvasExtents();
-
-	window.onresize = () => {
-		setCanvasExtents();
-	};
-
-	const makeStars = count => {
-		const out = [];
-		for (let i = 0; i < count; i++) {
-			const s = {
-				x: Math.random() * 1600 - 800,
-				y: Math.random() * 900 - 450,
-				z: Math.random() * 1000
-			};
-			out.push(s);
-		}
-		return out;
-	};
-
-	let stars = makeStars(1000);
-
-	const clear = () => {
-		c.fillStyle = "black";
-		c.fillRect(0, 0, canvas.width, canvas.height);
-	};
-
-	const putPixel = (x, y, brightness) => {
-		const intensity = brightness * 255;
-		const rgb = "rgb(" + intensity + "," + intensity + "," + intensity + ")";
-		c.fillStyle = rgb;
-		c.fillRect(x, y, 2, 2);
-	};
-
-	const moveStars = distance => {
-		const count = stars.length;
-		for (var i = 0; i < count; i++) {
-			const s = stars[i];
-			s.z -= distance;
-			while (s.z <= 1) {
-				s.z += 1000;
-			}
-		}
-	};
-
-	let prevTime;
-	const init = time => {
-		prevTime = time;
-		requestAnimationFrame(tick);
-	};
-
-	const tick = time => {
-		let elapsed = time - prevTime;
-		prevTime = time;
-
-		moveStars(elapsed * 0.1);
-
-		clear();
-
-		const cx = w / 2;
-		const cy = h / 2;
-
-		const count = stars.length;
-		for (var i = 0; i < count; i++) {
-			const star = stars[i];
-
-			const x = cx + star.x / (star.z * 0.001);
-			const y = cy + star.y / (star.z * 0.001);
-
-			if (x < 0 || x >= w || y < 0 || y >= h) {
-				continue;
-			}
-
-			const d = star.z / 1000.0;
-			const b = 1 - d * d;
-
-			putPixel(x, y, b);
-		}
-
-		requestAnimationFrame(tick);
-	};
-
-	requestAnimationFrame(init);
-}
+// list all arcades begin
 
 function loadArcades() {
 	//AJAX
@@ -227,6 +155,8 @@ function loadArcades() {
 	xhr.send();
 }
 
+// build table for list all arcades
+
 function displayArcades(arcadesList) {
 	/*	//DOM
 		let tbody = document.getElementById('arcadeList').firstElementChild.firstElementChild.nextElementSibling;
@@ -244,10 +174,12 @@ function displayArcades(arcadesList) {
 let buildTable = function(arcadesList) {
 	console.log("getting to table");
 	console.log(arcadesList);
-
+	if(document.getElementById('arcadeListTable') != undefined) {
+		document.getElementById('arcadeListTable').parentElement.removeChild(document.getElementById('arcadeListTable'));
+	}
 	let tableDiv = document.getElementById('arcadeList');
-
 	let table = document.createElement('table');
+	table.id = "arcadeListTable";
 	let tHead = document.createElement('thead');
 	let headerRow = document.createElement('tr');
 	for (property in arcadesList[0]) {
@@ -328,22 +260,12 @@ let buildTable = function(arcadesList) {
 
 }
 
+// list all arcades end
+
 
 // begin create arcade
 
-document.createArcadeForm.submit.addEventListener('click', function(e) {
-	e.preventDefault();
-	console.log('Adding arcade');
-	let newArcade = {
-		name: document.createArcadeForm.name.value,
-		description: document.createArcadeForm.description.value,
-		imageUrl: document.createArcadeForm.imageUrl.value,
-	};
-	//newFilm.title = newFilmForm.title.value; also works
-	//TODO: validate film properties
-	console.log(newArcade);
-	addArcade(newArcade);
-});
+
 
 function addArcade(newArcade) {
 	//xhr stuff here
@@ -355,7 +277,7 @@ function addArcade(newArcade) {
 			if (xhr.status == 200 || xhr.status == 201) { // Ok or Created
 				let arcade = JSON.parse(xhr.responseText);
 				console.log(arcade);
-				displayArcades(arcade);
+				displayArcade(arcade);
 			}
 			else {
 				console.error("POST request failed.");
@@ -371,7 +293,88 @@ function addArcade(newArcade) {
 // end create arcade
 
 
+// get single arcade by id begin
 
-function typingEffect() {
+function getArcade(arcadeId) {
+	// TODO:
+	// * Use XMLHttpRequest to perform a GET request to "api/films/"
+	//   with the filmId appended.
+	// * On success, if a response was received parse the film data
+	//   and pass the film object to displayFilm().
+	// * On failure, or if no response text was received, put "Film not found" 
+	//   in the filmData div.
+	let xhr = new XMLHttpRequest();
 
+	xhr.open('GET', 'api/arcades/' + arcadeId);
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200) {
+				console.log(xhr.responseText)
+				let arcade = JSON.parse(xhr.responseText);
+				console.log(arcade);
+				displayArcade(arcade);
+			} else {
+				console.log("Request failed: " + xhr.status);
+				console.log("Arcade not found.")
+			}
+		}
+	};
+
+	xhr.send();
 }
+
+function displayArcade(arcade) {
+	let singleArcadeDiv = document.getElementById('singleArcadeDiv');
+	singleArcadeDiv.textContent = '';
+	// TODO:
+	// * Create and append elements to the data div to display:
+	// * Film title (h1) and description (blockquote).
+	// * Rating, release year, and length as an unordered list.
+
+	for (property in arcade) {
+		let arcadeHeader = document.createElement('h1');
+		let arcadeBlockQuote = document.createElement('blockquote');
+		let singleArcadeImage = document.createElement('img');
+		if (property === "imageUrl") {
+			singleArcadeImage.className = 'zoom';
+			singleArcadeImage.src = arcade[property];
+			singleArcadeImage.style.width = '300px';
+			singleArcadeImage.style.height = 'auto';
+			singleArcadeImage.style.border = '2px solid white';
+			singleArcadeImage.style.backgroundColor = 'rgb(54, 69, 79, 0.8)';
+			singleArcadeImage.style.margin = 'auto';
+			singleArcadeDiv.appendChild(singleArcadeImage);
+		} else if (property === "name") {
+			arcadeHeader.className = 'zoom';
+			arcadeHeader.style.color = 'white';
+			arcadeHeader.style.fontSize = '20px';
+			arcadeHeader.style.backgroundColor = 'rgb(54, 69, 79, 0.8)';
+			arcadeHeader.style.border = '1px solid white';
+			arcadeHeader.textContent = arcade[property];
+			singleArcadeDiv.appendChild(arcadeHeader);
+		} else if (property === "description") {
+
+			arcadeBlockQuote.className = 'zoom';
+			arcadeBlockQuote.style.color = 'white';
+			arcadeBlockQuote.style.backgroundColor = 'rgb(54, 69, 79, 0.8)';
+			arcadeBlockQuote.style.fontSize = '20px';
+			arcadeBlockQuote.style.border = '1px solid white';
+			arcadeBlockQuote.textContent = arcade[property];
+			singleArcadeDiv.appendChild(arcadeBlockQuote);
+		}
+		singleArcadeDiv.style.textAlign = "center";
+
+		let searchDiv = document.getElementById('searchDiv');
+		searchDiv.style.display = "none";
+		singleArcadeDiv.style.display = "block";
+
+		// retrieve games later
+		// let arcadeId = arcade.id;
+		// getGames(arcadeId);
+	}
+}
+
+/*let getGames = function(arcadeId) {
+	
+}*/
