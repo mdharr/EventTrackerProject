@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Arcade Archives</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Arcade Archives</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/script.js"></script>
+</head>
+<body class="vignette">
+	<div class="wrapper">
+		<ul>
+			<li id="homeLink" class="zoom"><a href="#">Home</a></li>
+			<li id="arcadeLink" class="zoom"><a href="#">Arcades</a></li>
+			<li id="searchLink" class="zoom"><a href="#">Search</a></li>
+			<li id="addLink" class="zoom"><a href="#">Add</a></li>
+			<li id="updateLink" class="zoom"><a href="#">Update</a></li>
+			<li id="deleteLink" class="zoom"><a href="#">Delete</a></li>
+			<li id="gamesLink" class="zoom"><a href="#">Games</a></li>
+		</ul>
+	</div>
 
-    <script src="js/script.js"></script>
-  </head>
-  <body>
-	<h1>Archiving arcades near you!</h1>
-  </body>
+	<div id="welcome" class="mainDivs"></div>
+
+	<div id="arcadeList" class="mainDivs" style="display: none;"></div>
+
+	<div id="arcadeDetails" class="mainDivs" style="display: none;"></div>
+	
+	<div id="searchDiv" class="mainDivs" style="display: none;"></div>
+
+	<div id="newArcadeDiv" class="mainDivs zoom" style="display: none;">
+		<h3>Add a New Arcade</h3>
+		<hr>
+		<form name="createArcadeForm">
+			<label for="name">Name: </label> 
+			<input type="text" name="name"placeholder="name"><br> 
+			<label for="description">Description: </label>
+			<input type="text" name="description" placeholder="description"><br>
+			<label for="name">Image: </label>
+			<input type="text" name="imageUrl" placeholder="image url"><br>
+			<input id="newArcadeBtn" type="submit" name="submit" value="submit"><br>
+		</form>
+	</div>
+
+	<div id="updateArcadeDiv" class="mainDivs" style="display: none;"></div>
+	
+	<div id="deleteArcadeDiv" class="mainDivs" style="display: none;"></div>
+	
+	<div id="gamesList" class="mainDivs" style="display: none;"></div>
+
+	<!-- 	  <div id="starfield">
+    	<canvas id="canvas"></canvas>
+  </div> -->
+	<footer class="footer">
+		<p>
+			<a id="myGitHub" href="https://github.com/mdharr" target="_blank"
+				rel="noreferrer noopener">Author: Michael Harrington</a><br> <a
+				id="myEmail" href="mailto:mdharr7@gmail.com" target="_blank"
+				rel="noreferrer noopener">mdharr7@gmail.com</a>
+		</p>
+	</footer>
+</body>
 </html>
