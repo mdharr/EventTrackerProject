@@ -8,20 +8,39 @@
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/script.js"></script>
 </head>
-<body class="vignette">
+<body class="vignette" id="body">
 	<div class="wrapper">
 		<ul>
 			<li id="homeLink" class="zoom"><a href="#">Home</a></li>
 			<li id="arcadeLink" class="zoom"><a href="#">Arcades</a></li>
 			<li id="searchLink" class="zoom"><a href="#">Search</a></li>
 			<li id="addLink" class="zoom"><a href="#">Add</a></li>
-			<li id="updateLink" class="zoom"><a href="#">Update</a></li>
-			<li id="deleteLink" class="zoom"><a href="#">Delete</a></li>
+			<li id="updateLink" class="zoom" style="display: none;"><a
+				href="#">Update</a></li>
+			<li id="deleteLink" class="zoom" style="display: none;"><a
+				href="#">Delete</a></li>
 			<li id="gamesLink" class="zoom"><a href="#">Games</a></li>
 		</ul>
 	</div>
 
-	<div id="welcome" class="mainDivs"></div>
+	<div id="welcome" class="mainDivs zoomV2">
+
+		<h1>
+			<strong>Do you miss retro arcades?</strong>
+		</h1>
+		<br>
+		<blockquote>Arcade Archives is your number one source for
+			finding active arcades near you!</blockquote>
+		<br>
+
+	</div>
+	<div id="pacman" class="pacman mainDivs">
+		<div class="pacman-top"></div>
+		<div class="pacman-bottom"></div>
+		<div class="feed"></div>
+	</div>
+
+	<div id="arcadeIdDiv" style="display: none;"></div>
 
 	<div id="arcadeList" class="mainDivs" style="display: none;"></div>
 
@@ -29,38 +48,58 @@
 
 	<div id="singleArcadeDiv" class="mainDivs" style="display: none;"></div>
 
-	<div id="searchDiv" class="mainDivs" style="display: none;">
-
+	<div id="searchDiv" class="mainDivs zoomV2" style="display: none;">
+		<h3>Search for an Arcade</h3>
+		<hr>
 		<form name="arcadeForm">
 			<label for="arcadeId">Search</label> <input type="number"
-				name="arcadeId">
-			<button name="lookup">Get Arcade by Id</button>
+				name="arcadeId" placeholder="arcade id">
+			<button name="lookup" id="searchByIdBtn">Submit</button>
 		</form>
 
 	</div>
 
-	<div id="newArcadeDiv" class="mainDivs zoom" style="display: none;">
+	<div id="newArcadeDiv" class="mainDivs zoomV2" style="display: none;">
 		<h3>Add a New Arcade</h3>
 		<hr>
 		<form name="createArcadeForm" id="createArcadeForm">
 			<label for="name">Name: </label> <input type="text" name="name"
 				placeholder="name"><br> <label for="description">Description:
 			</label> <input type="text" name="description" placeholder="description"><br>
-			<label for="imageUrl">Image: </label> <input type="text" name="imageUrl"
-				placeholder="image url"><br> <input
+			<label for="imageUrl">Image: </label> <input type="text"
+				name="imageUrl" placeholder="image url"><br> <input
 				type="submit" name="submit" value="submit" id="newArcadeBtn"><br>
 		</form>
 	</div>
 
-	<div id="updateArcadeDiv" class="mainDivs" style="display: none;"></div>
+	<div id="updateArcadeDiv" class="mainDivs zoomV2"
+		style="display: none;">
+
+		<h3>Update an Arcade</h3>
+		<hr>
+		<form name="updateArcadeForm" id="updateArcadeForm">
+			<label for="name">Name: </label> <input type="text" name="name"
+				placeholder="name"><br> <label for="description">Description:
+			</label> <input type="text" name="description" placeholder="description"><br>
+			<label for="imageUrl">Image: </label> <input type="text"
+				name="imageUrl" placeholder="image url"><br> <input
+				type="submit" name="submit" value="submit" id="newArcadeBtn"><br>
+		</form>
+
+	</div>
 
 	<div id="deleteArcadeDiv" class="mainDivs" style="display: none;"></div>
 
-	<div id="gamesList" class="mainDivs" style="display: none;"></div>
+	<div id="gamesList" class="mainDivs zoomV2" style="display: none;"></div>
 
-	<!-- 	  <div id="starfield">
-    	<canvas id="canvas"></canvas>
-  </div> -->
+	<div id="starfield" class="mainDivs" style="display: none;">
+		<h5 id="gamesHelp">Press tab in game for options menu</h5>
+		<iframe src="https://archive.org/embed/pacman_nes_2" width="600"
+			height="450"></iframe>
+		<iframe src="https://archive.org/embed/galaga-u" width="600"
+			height="450"></iframe>
+		<canvas id="canvas"></canvas>
+	</div>
 	<footer class="footer">
 		<p>
 			<a id="myGitHub" href="https://github.com/mdharr" target="_blank"

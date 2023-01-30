@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=Roboto:wght@100&display=swap');
 
 body {
 	display: flex;
@@ -30,44 +31,28 @@ h1 {
 	margin-right: 50px;
 }
 
-#eventList {
-	
+iframe {
+	margin: 50px;
+}
+
+#gamesHelp {
+	text-align: center;
+	color: white;
 }
 
 #welcome {
-	background-color: white;
+	background-color: rgb(54, 69, 79, 0.8);
 	align-items: center;
 	justify-content: center;
 	margin: 0;
-	color: black;
-	font-size: 20px;
-	height: auto;
-	width: 100%;
-	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-
-/*    #titleContainer { 
-	hsl(210,25.5%,40%) blue
-	 background-color: rgba(217, 26, 50, .35); red
-		background-color: rgba(234,170,0,.35); mustard
- 	width: auto;
-	height: auto;
-	display: flex;
-	margin: auto;
-	align-items: center;
-	justify-content: center;
-
-}
-
-#titleContainer:hover {
 	color: white;
-	border-bottom: solid white !important;
-	transition: transform .2s;
-    margin: 0 auto;
-    width: auto;
+	font-size: 20px;
+	text-align: center;
 	height: auto;
-    transform: scale(1.02);
-}  */
+	width: 50%;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	font-family: 'Press Start 2P', sans-serif;
+}
 
 #eventDetails {
 	height: 100vh;
@@ -90,7 +75,7 @@ h1 {
 }
 
 #myEmail:hover {
-	color: yellow;
+	color: #ffc000;
 	text-decoration: none;
 }
 
@@ -100,7 +85,7 @@ h1 {
 }
 
 #myGitHub:hover {
-	color: yellow;
+	color: #ffc000;
 	text-decoration: none;
 }
 
@@ -137,6 +122,43 @@ h1 {
 	font-family: russo one;
 	position: relative;
 
+}
+
+#searchDiv {
+	display: flex;
+	color: white;
+	background-color: rgb(54, 69, 79, 0.8);
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	width: 300px;
+	align-items: center;
+	border: 2px solid white;
+}
+
+#searchByIdBtn {
+	margin-top: 20px;
+}
+
+#searchByIdBtn:hover {
+	background-color: white;
+	color: black;
+}
+
+#updateArcadeDiv {
+	display: flex;
+	color: white;
+	background-color: rgb(54, 69, 79, 0.8);
+	text-align: left;
+	padding: 20px;
+	width: 300px;
+	align-items: center;
+	border: 2px solid white;
+}
+
+#updateArcadeDiv > h3 {
+	margin-left: 85px;
 }
 
 #newArcadeDiv {
@@ -203,10 +225,23 @@ input {
 	color: black !important;
 }
 
+.zoomV2 {
+	transition: transform .2s;
+	margin: 0 auto;
+}
+
+.zoomV2:hover {
+	transform: scale(1.15);
+	color: #ffc000 !important;
+	border: 2px solid #ffc000;
+}
+
 #arcadeList {
-	  height: 400px;
+	  width: 400px;
+	  height: 600px;
  	  width: auto;
   	  overflow-y:auto;
+  	  border: solid white;
 }
 
 #tableDiv {
@@ -214,8 +249,8 @@ input {
   background-color: grey;
   text-align: center;
   margin: 100px;
-  height: 200px;
-  width: auto;
+  height: 300px;
+  width: 400px;
   overflow-y:auto;
 }
 
@@ -224,8 +259,8 @@ table {
   background-color: rgb(54, 69, 79, 0.8);
   border-spacing: 0;
   border-collapse: collapse;
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 300px;
   text-align: center;
   overflow-y:auto;
 }
@@ -254,15 +289,14 @@ table > tbody > tr:hover,
 table > tbody > tr:hover {
   background-color: grey;
   color: white;
-  border-bottom: solid black !important;
+  border: solid #ffc000 !important;
   transition: transform .2s;
   margin: 0 auto;
   transform: scale(1.02);
 }
 
-
-
-/*#canvas {
+#canvas {
+	display: none;
     width: 100%;
     height: 100%;
     display: block;
@@ -270,4 +304,135 @@ table > tbody > tr:hover {
     top: 0;
     left: 0;
     z-index: -1;
-}*/
+}
+
+.pacman{
+  margin:100px 10px;
+	
+}
+
+.pacman-top{
+  background-color:yellow;
+  height:100px;
+  width:200px;
+  border-radius:100px 100px 0 0;
+  animation: spin1 0.5s infinite linear;
+}
+
+.pacman-bottom{
+background-color:yellow;
+  height:100px;
+  width:200px;
+  border-radius:0 0 100px 100px;
+  animation: spin2 0.5s infinite linear;
+}
+
+.feed {
+margin-top: -185px;
+margin-left:15px;
+width: 45px;
+height: 45px;
+border-radius: 30%;
+-moz-animation: eat 1s linear 0s infinite;
+-webkit-animation: eat 1s linear 0s infinite;
+animation: eat 1s linear 0s infinite;
+}   
+
+/* Animation*/
+
+@keyframes spin1 {
+	0%  {transform: rotate(0deg);}
+	50%{transform: rotate(-35deg);}
+  
+}
+@keyframes spin2 {
+	0%  {transform: rotate(0deg);}
+  50%{transform: rotate(35deg);}	
+}
+
+@-moz-keyframes spin1 {
+	0%  {transform: rotate(0deg);}
+	50%{transform: rotate(-35deg);}
+  
+}
+@-moz-keyframes spin2 {
+	0%  {transform: rotate(0deg);}
+  50%{transform: rotate(35deg);}	
+}
+
+@-webkit-keyframes spin1 {
+	0%  {transform: rotate(0deg);}
+	50%{transform: rotate(-35deg);}
+  
+}
+@-webkit-keyframes spin2 {
+	0%  {transform: rotate(0deg);}
+  50%{transform: rotate(35deg);}	
+}
+
+@keyframes eat {
+	0% { box-shadow: 
+      100px 65px 0 0 white, 
+      300px 65px 0 0 white, 
+      500px 65px 0 0 white, 
+      700px 65px 0 0 white,
+      900px 65px 0 0 white, 
+      1100px 65px 0 0 white, 
+      1300px 65px 0 0 white;}
+  
+100% { box-shadow: 
+      0px 65px 0 0 white, 
+      100px 65px 0 0 white,
+      300px 65px 0 0 white, 
+      500px 65px 0 0 white, 
+      700px 65px 0 0 white, 
+      900px 65px 0 0 white, 
+      1100px 65px 0 0 white;}
+
+}
+
+
+@-moz-keyframes eat {
+	0% { box-shadow: 
+      100px 65px 0 0 white, 
+      300px 65px 0 0 white, 
+      500px 65px 0 0 white, 
+      700px 65px 0 0 white,
+      900px 65px 0 0 white, 
+      1100px 65px 0 0 white, 
+      1300px 65px 0 0 white;}
+  
+100% { box-shadow: 
+      0px 65px 0 0 white, 
+      100px 65px 0 0 white,
+      300px 65px 0 0 white, 
+      500px 65px 0 0 white, 
+      700px 65px 0 0 white, 
+      900px 65px 0 0 white, 
+      1100px 65px 0 0 white;}
+
+}
+
+
+@-webkit-keyframes eat {
+	0% { box-shadow: 
+      100px 65px 0 0 white, 
+      300px 65px 0 0 white, 
+      500px 65px 0 0 white, 
+      700px 65px 0 0 white,
+      900px 65px 0 0 white, 
+      1100px 65px 0 0 white, 
+      1300px 65px 0 0 white;}
+  
+100% { box-shadow: 
+      0px 65px 0 0 white, 
+      100px 65px 0 0 white,
+      300px 65px 0 0 white, 
+      500px 65px 0 0 white, 
+      700px 65px 0 0 white, 
+      900px 65px 0 0 white, 
+      1100px 65px 0 0 white;}
+
+}
+
+
