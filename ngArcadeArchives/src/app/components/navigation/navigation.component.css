@@ -1,0 +1,70 @@
+nav {
+  padding-left: 20px;
+  background-color: black !important;
+  display: flex;
+}
+
+.nav-font {
+  font-size: 30px;
+}
+
+a {
+  color: white;
+}
+
+.home,
+.about,
+.arcades,
+.arcade {
+  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
+
+.home:visited {
+  color: #004eab;
+}
+
+.about:visited {
+ color: #db3938;
+}
+
+.arcades:visited {
+ color: #0c8e5a;
+}
+
+.arcade:visited {
+ color: #f1bb23;
+}
+
+.home:hover {
+  color: white;
+}
+
+.about:hover {
+ color: white;
+}
+
+.arcades:hover {
+ color: white;
+}
+
+.arcade:hover {
+ color: white;
+}
+
+.home:active {
+  color: #004eab;
+}
+
+.about:active {
+ color: #db3938;
+}
+
+.arcades:active {
+ color: #0c8e5a;
+}
+
+.arcade:active {
+ color: #f1bb23;
+}

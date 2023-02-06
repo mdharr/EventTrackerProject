@@ -313,25 +313,25 @@ table > tbody > tr:hover {
 
 .pacman-top{
   background-color:yellow;
-  height:100px;
-  width:200px;
-  border-radius:100px 100px 0 0;
+  height:25px;
+  width:50px;
+  border-radius:25px 25px 0 0;
   animation: spin1 0.5s infinite linear;
 }
 
 .pacman-bottom{
 background-color:yellow;
-  height:100px;
-  width:200px;
-  border-radius:0 0 100px 100px;
+  height:25px;
+  width:50px;
+  border-radius:0 0 25px 25px;
   animation: spin2 0.5s infinite linear;
 }
 
 .feed {
 margin-top: -185px;
 margin-left:15px;
-width: 45px;
-height: 45px;
+width: 10px;
+height: 10px;
 border-radius: 30%;
 -moz-animation: eat 1s linear 0s infinite;
 -webkit-animation: eat 1s linear 0s infinite;

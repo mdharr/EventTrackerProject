@@ -39,7 +39,6 @@ export class ArcadeService {
 
   create(arcade: Arcade): Observable<Arcade> {
     // arcade.completed = false;
-    arcade.description = '';
       return this.http.post<Arcade>(this.url, arcade).pipe(
         catchError((err: any) => {
           console.log(err);

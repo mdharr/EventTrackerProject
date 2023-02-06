@@ -13,6 +13,7 @@ import { ArcadeComponent } from './components/arcade/arcade.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ArcadeService } from './services/arcade.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ArcadeService } from './services/arcade.service';
     ArcadesListComponent,
     ArcadeComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
